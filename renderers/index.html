@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>CSV Diff</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Scripts -->
+    <script>
+        delete module.exports
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="jumbotron">
+                        <h1 class="display-4">CSV Diff</h1>
+                        <p class="lead">Simple tool to aggregate and diff two csv files.</p>
+                        <hr class="my-4">
+                        <ol>
+                            <li>Select first file to compare.</li>
+                            <li>Select second file to compare.</li>
+                            <li>Select headers to aggregate</li>
+                            <li>Click Download</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>First File:</h5>
+                    <div class="input-group mb-3">
+                        <input type="button" id="leftButton" onclick="leftFile();" class="btn btn-primary"
+                            value="Select File" />
+                        <div id="leftSelected"><strong>Selected.</strong> <input type="button"
+                                onclick="showLeftButton();" class="btn btn-sm btn-secondary" value="Reselect" /></div>
+                    </div>
+                    <h5>Second File:</h5>
+                    <div class="input-group mb-3">
+                        <input type="button" id="rightButton" onclick="rightFile();" class="btn btn-primary"
+                            value="Select File" />
+                        <div id="rightSelected"><strong>Selected.</strong> <input type="button"
+                                onclick="showRightButton();" class="btn btn-sm btn-secondary" value="Reselect" /></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="after_files">
+                        <h5>Aggregate:</h5>
+                        <div id="aggregates">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="results_pane" class="container mt-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="downloadResults();"
+                        id="download">Download
+                        Results</button>
+                </div>
+            </div>
+        </div>
+    <script src="./index.js"></script>
+
+</body>
+
+<script type="text/javascript">
+    $('#after_files').hide();
+    $('#results_pane').hide();
+    $('#leftSelected').hide();
+    $('#rightSelected').hide();
+    $("download").prop('disabled', true);
+
+</script>
+
+</html>
